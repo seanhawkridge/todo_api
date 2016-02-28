@@ -1,0 +1,25 @@
+
+<form id="add_item" action="/items/newitem" method="POST">
+  <input type="text" name="description" id="item" placeholder="item" />
+  <input type="text" name="due_date" id="datepicker" placeholder="due date" />
+  <input type="submit" value="Add Item" />
+</form>
+
+<ul id="items">
+
+  <% @items.each do |item| %>
+
+  <li>
+    <%= item.description %>
+    <%= item.due_date %>
+
+    <form id="delete" action="/items/deleteitem" method="POST">
+      <input type="hidden" name="current_item" value="<%= item.id %>">
+      <input type="submit" value="Delete" />
+    </form>
+    
+  </li>
+
+  <% end %>
+
+</ul>
